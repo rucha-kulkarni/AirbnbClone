@@ -1,6 +1,5 @@
 // app.js
 window.addEventListener("DOMContentLoaded", (event) => {
-    // Your code goes here
 
     const searchButton = document.getElementById("search-button");
     const listingsContainer = document.getElementById("listings-container");
@@ -11,16 +10,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
     searchButton.addEventListener("click", () => {
         const searchInput = document.getElementById("search-input").value;
 
-        // Replace this URL with your actual API endpoint
-        fetch(`https://api.example.com/listings?search=${searchInput}`)
+        fetch(`https://rapidapi.com/3b-data-3b-data-default/api/airbnb13/search=${searchInput}`)
             .then(response => response.json())
             .then(data => {
-                listingsContainer.innerHTML = ""; // Clear previous listings
+                listingsContainer.innerHTML = ""; 
 
                 data.forEach(listing => {
                     const listingCard = createListingCard(listing);
                     listingsContainer.appendChild(listingCard);
-                      // Add an event listener to each listing card
+                     
                     listingCard.addEventListener("click", () => {
                         displayListingDetails(listing);
                     });
@@ -59,8 +57,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
         const detailsDiv = document.createElement("div");
         detailsDiv.classList.add("listing-details");
 
-        // Customize the content of the details div with listing properties
-        // For example:
         detailsDiv.innerHTML = `
         <h2>${listing.name}</h2> 
         <p>${listing.description}</p>
@@ -97,12 +93,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 },
                 (error) => {
                     console.error("Error getting user's location:", error);
-                    // You can provide a fallback here if the user denies geolocation
                 }
             );
         } else {
             console.error("Geolocation is not supported by this browser");
-            // You can provide a fallback here for browsers that don't support geolocation
         }
     }
 
@@ -111,8 +105,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
     // Display listings along with their distance from the user
     function displayListingsWithDistance(userLatitude, userLongitude) {
-        // Your previous code for fetching listings goes here
-
+    
         data.forEach((listing) => {
             // Calculate the distance between the user and the listing
             const listingDistance = calculateDistance(
@@ -126,8 +119,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
             const detailsDiv = document.createElement("div");
             detailsDiv.classList.add("listing-details");
 
-            // Customize the content of the details div with listing properties and distance
-            // For example:
             detailsDiv.innerHTML = `
             <h2>${listing.name}</h2>
             <p>${listing.description}</p>
@@ -215,8 +206,6 @@ function displayReviewsAndRatings(listing) {
     // Create a div to display reviews and ratings
     const reviewsDiv = document.createElement("div");
     reviewsDiv.classList.add("reviews-ratings");
-
-    // Customize the content of the reviews div
     reviewsDiv.innerHTML = `
         <h2>Reviews and Ratings</h2>
         <ul>
@@ -493,8 +482,6 @@ function displayNavigation(listing) {
 
     return navigationContainer;
 }
-
-// ...
 
 // Add an event listener to display listing details when a listing is clicked
 listingList.addEventListener("click", (event) => {
